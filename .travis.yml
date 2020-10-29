@@ -15,7 +15,6 @@ install:
 - pip install flake8
 before_script:
 - python --version
-- pip show sopel_plugins.channelmgnt
 script:
 - flake8 .
 after_script:
