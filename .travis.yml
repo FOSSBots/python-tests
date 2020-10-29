@@ -1,0 +1,30 @@
+language: python
+python:
+- '3.6'
+- '3.7'
+- '3.8'
+- '3.8-dev'
+- '3.9'
+- '3.9-dev'
+os: linux
+dist: focal
+group: edge
+arch: arm64-graviton2
+virt: lxd
+install:
+- pip install flake8
+before_script:
+- python --version
+- pip show sopel_plugins.channelmgnt
+script:
+- flake8 .
+after_script:
+- pip freeze
+notifications:
+  irc:
+    channels:
+    - chat.freenode.net#miraheze-bots
+    on_success: change
+    on_failure: always
+    template:
+    - "%{repository}/%{branch}/%{commit} - %{author} %{message} %{build_url}"
