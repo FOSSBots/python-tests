@@ -15,9 +15,8 @@ install:
 - pip install flake8
 before_script:
 - python --version
-- pip show sopel_plugins.channelmgnt
 script:
-- flake8 .
+- flake8 . --max-line-length 265
 after_script:
 - pip freeze
 notifications:
