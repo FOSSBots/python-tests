@@ -7,7 +7,7 @@ import models
 from sqlalchemy import create_engine
 
 PATH = '.'
-PLUGINPATH = '..'
+PLUGINPATH = '../sopel_*/*'
 sys.path.append(PATH)
 
 
