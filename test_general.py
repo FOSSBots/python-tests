@@ -6,8 +6,8 @@ import sys
 import models
 from sqlalchemy import create_engine
 
-PATH = '../MirahezeBots/MirahezeBots'
-PLUGINPATH = '../MirahezeBots/MirahezeBots/plugins'
+PATH = '.'
+PLUGINPATH = '..'
 sys.path.append(PATH)
 
 
