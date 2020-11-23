@@ -6,6 +6,7 @@ PATH = '.'
 PLUGINPATH = '../sopel_*/*'
 sys.path.append(PATH)
 
+
 def test_line_length():
     MAX_LENGTH = 265 + 1
     for top, dirs, files in os.walk(PLUGINPATH):
@@ -17,6 +18,7 @@ def test_line_length():
                 for line_number, line in enumerate(src):
                     assert len(line.strip()) < MAX_LENGTH, 'length of line #{0} exceeds limit'.format(line_number)
 
+                    
 def test_no_get_on_lists():
     reg = r'get\([0-9]'
     for top, dirs, files in os.walk(PLUGINPATH):
