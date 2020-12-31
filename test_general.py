@@ -4,31 +4,9 @@ import re
 import sqlite3
 import sys
 
-import models
-
-from sqlalchemy import create_engine
-
-PATH = '../MirahezeBots/MirahezeBots'
-PLUGINPATH = '../MirahezeBots/MirahezeBots/plugins'
+PATH = '.'
+PLUGINPATH = '../sopel_*/*'
 sys.path.append(PATH)
-
-
-def test_db_schema_is_same():
-    """Confirms database matches as expected."""
-    original, new = set(), set()  # noqa: F841
-    with sqlite3.connect(os.path.join(PATH, 'example.db')) as conn:
-        conn.text_factory = str
-        res = conn.execute("SELECT name FROM sqlite_master WHERE type='table';")
-        [original.add(tbl[0]) for tbl in res if not tbl[0] == 'nick_ids' and not tbl[0] == 'sqlite_sequence']
-
-    try:
-        os.unlink(os.path.join(PATH, "example-model.db"))
-    except FileNotFoundError:
-        pass
-
-    engine = create_engine('sqlite:///{0}'.format(os.path.join(PATH, "..", "example-model.db")))
-    models.Base.metadata.create_all(bind=engine)
-    assert original == set(engine.table_names())
 
 
 def test_line_length():
